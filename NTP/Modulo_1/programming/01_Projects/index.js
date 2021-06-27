@@ -4,15 +4,22 @@ const express = require('express');
 const app = express()
 
 //Routes
-const { RouterIndex } = require('./routes/index');
+const { RouterIndex } = require('./routes/deber');
 
 app.use("/", RouterIndex);
+// app.use("/user", RouterIndex);
+// app.use("/user/data", RouterIndex);
+// app.use(RouterIndex);
+
 // app.use("/user", RouterIndex);
 // app.use("user/data", RouterIndex);
 /**
         "/" + "/" + "//" => "/"
         "/" + "saludo" => "//saludo" => "/saludo"
         "/" + "/saludo/:nombre" = "//saludo/:nombre => "/saludo:nombre"
+
+        "/user" + "/saludo" = "/user/saludo"
+        "/user/data" + "/saludo" = "/user/data/saludo"
  */
 
 app.listen(3000, () => {
