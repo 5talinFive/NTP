@@ -69,6 +69,6 @@ router
               })
         
         //Exportamos las rutas
-        module.exports.RouterIndex = router
+        // module.exports.RouterIndex = router
         
         

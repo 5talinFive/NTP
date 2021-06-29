@@ -1,13 +1,15 @@
 //Traemos el paquete
 const { Router } = require('express');
 const data = require('../data.json');
+const { user } = require('../lib/Schema/User');
+const { DataValidator } = require("../middleware/DataValidator");
 //Inicializamos router
 const router = Router()
 
 //creacion de los endpoint
 router
     .get("/", (req, res) => {
-        res.send("Hola mundo con ExpressJs");
+        res.send("Hola mundo con expressJs");
     })
     .get("/user", (req, res) => {
         res.json({
@@ -15,7 +17,7 @@ router
             bosy: data,
         })
     })
-    .get("/saludo", (req, res) => {
+    .get("/saludo", DataValidator("query", user), (req, res) => {
         const { query } = req;
         res.json({
             saludo: `Hola soy ${query.nombre} ${query.apellido}`,
@@ -29,7 +31,7 @@ router
         });
         
         //Exportamos las rutas
-        // module.exports.RouterVideo = router
+        module.exports.RouterIndex = router
         
         // module = {
         //     exports: {
